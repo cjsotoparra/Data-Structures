@@ -1,0 +1,156 @@
+2 insert 1705
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-01.dot
+
+2 insert 406
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-02.dot
+
+2 insert 1139
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-03.dot
+
+2 delete 406
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-04.dot
+
+2 insert 750
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-05.dot
+
+2 delete 1705
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-06.dot
+
+2 insert 1190
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-07.dot
+
+2 insert 1950
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-08.dot
+
+2 insert 354
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-09.dot
+
+2 insert 312
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-10.dot
+
+2 insert 2373
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-11.dot
+
+2 insert 1666
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-12.dot
+
+2 delete 2373
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-13.dot
+
+2 insert 681
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-14.dot
+
+2 insert 1173
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-15.dot
+
+2 insert 1097
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-16.dot
+
+2 delete 681
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-17.dot
+
+2 delete 750
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-18.dot
+
+2 delete 1139
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-19.dot
+
+2 delete 1173
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-20.dot
+
+2 delete 1950
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-21.dot
+
+2 delete 1190
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-22.dot
+
+2 delete 1666
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-23.dot
+
+2 delete 312
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-24.dot
+
+2 delete 354
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-25.dot
+
+2 delete 1097
+
+2 inOrder
+2 preOrder
+2 debug tree_test14-26.dot
+

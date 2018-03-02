@@ -1,0 +1,24 @@
+3 insert 121
+
+3 inOrder
+3 preOrder
+3 debug tree_test10-1.dot
+
+3 insert 361
+
+3 inOrder
+3 preOrder
+3 debug tree_test10-2.dot
+
+3 insert 289
+
+3 inOrder
+3 preOrder
+3 debug tree_test10-3.dot
+
+3 insert 169
+
+3 inOrder
+3 preOrder
+3 debug tree_test10-4.dot
+

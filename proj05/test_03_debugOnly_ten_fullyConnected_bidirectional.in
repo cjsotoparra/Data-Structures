@@ -1,0 +1,112 @@
+vertex v00
+vertex v01
+vertex v02
+vertex v03
+vertex v04
+vertex v05
+vertex v06
+vertex v07
+vertex v08
+vertex v09
+
+edge v00 v00 1
+edge v00 v01 2
+edge v00 v02 3
+edge v00 v03 4
+edge v00 v04 5
+edge v00 v05 6
+edge v00 v06 7
+edge v00 v07 8
+edge v00 v08 9
+edge v00 v09 10
+edge v01 v00 11
+edge v01 v01 12
+edge v01 v02 13
+edge v01 v03 14
+edge v01 v04 15
+edge v01 v05 16
+edge v01 v06 17
+edge v01 v07 18
+edge v01 v08 19
+edge v01 v09 20
+edge v02 v00 21
+edge v02 v01 22
+edge v02 v02 23
+edge v02 v03 24
+edge v02 v04 25
+edge v02 v05 26
+edge v02 v06 27
+edge v02 v07 28
+edge v02 v08 29
+edge v02 v09 30
+edge v03 v00 31
+edge v03 v01 32
+edge v03 v02 33
+edge v03 v03 34
+edge v03 v04 35
+edge v03 v05 36
+edge v03 v06 37
+edge v03 v07 38
+edge v03 v08 39
+edge v03 v09 40
+edge v04 v00 41
+edge v04 v01 42
+edge v04 v02 43
+edge v04 v03 44
+edge v04 v04 45
+edge v04 v05 46
+edge v04 v06 47
+edge v04 v07 48
+edge v04 v08 49
+edge v04 v09 50
+edge v05 v00 51
+edge v05 v01 52
+edge v05 v02 53
+edge v05 v03 54
+edge v05 v04 55
+edge v05 v05 56
+edge v05 v06 57
+edge v05 v07 58
+edge v05 v08 59
+edge v05 v09 60
+edge v06 v00 61
+edge v06 v01 62
+edge v06 v02 63
+edge v06 v03 64
+edge v06 v04 65
+edge v06 v05 66
+edge v06 v06 67
+edge v06 v07 68
+edge v06 v08 69
+edge v06 v09 70
+edge v07 v00 71
+edge v07 v01 72
+edge v07 v02 73
+edge v07 v03 74
+edge v07 v04 75
+edge v07 v05 76
+edge v07 v06 77
+edge v07 v07 78
+edge v07 v08 79
+edge v07 v09 80
+edge v08 v00 81
+edge v08 v01 82
+edge v08 v02 83
+edge v08 v03 84
+edge v08 v04 85
+edge v08 v05 86
+edge v08 v06 87
+edge v08 v07 88
+edge v08 v08 89
+edge v08 v09 90
+edge v09 v00 91
+edge v09 v01 92
+edge v09 v02 93
+edge v09 v03 94
+edge v09 v04 95
+edge v09 v05 96
+edge v09 v06 97
+edge v09 v07 98
+edge v09 v08 99
+edge v09 v09 100
+

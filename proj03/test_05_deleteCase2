@@ -1,0 +1,13 @@
+0 insert 10
+0 insert 20
+
+0 inOrder
+0 preOrder
+0 debug tree_test05-1.dot
+
+0 delete 10
+
+0 inOrder
+0 preOrder
+0 debug tree_test05-2.dot
+

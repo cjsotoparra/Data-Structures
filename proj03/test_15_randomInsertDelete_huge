@@ -1,0 +1,150 @@
+3 insert 1463
+3 insert 7651
+3 insert 4064
+3 delete 4064
+3 insert 2174
+3 insert 4725
+3 delete 2174
+3 delete 7651
+3 delete 1463
+3 insert 4976
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-01.dot
+
+3 delete 4725
+3 insert 8078
+3 insert 3637
+3 delete 8078
+3 insert 4325
+3 delete 4976
+3 delete 3637
+3 delete 4325
+3 insert 5404
+3 delete 5404
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-02.dot
+
+3 insert 9356
+3 delete 9356
+3 insert 6061
+3 insert 1815
+3 insert 747
+3 insert 8114
+3 delete 8114
+3 insert 1302
+3 insert 1483
+3 insert 1106
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-03.dot
+
+3 insert 3932
+3 delete 747
+3 insert 294
+3 insert 2344
+3 insert 6397
+3 insert 5444
+3 insert 1341
+3 insert 5294
+3 delete 5294
+3 insert 458
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-04.dot
+
+3 insert 8406
+3 insert 9566
+3 delete 458
+3 insert 6502
+3 insert 5273
+3 insert 6701
+3 delete 1106
+3 delete 1483
+3 delete 9566
+3 delete 294
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-05.dot
+
+3 insert 9418
+3 insert 8570
+3 insert 9049
+3 insert 9307
+3 insert 9389
+3 delete 6502
+3 delete 6061
+3 insert 3804
+3 insert 1956
+3 insert 5063
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-06.dot
+
+3 insert 730
+3 delete 1302
+3 insert 9079
+3 delete 5273
+3 insert 9128
+3 delete 1815
+3 insert 3017
+3 insert 4995
+3 insert 619
+3 insert 6383
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-07.dot
+
+3 insert 3802
+3 insert 3652
+3 insert 1750
+3 insert 840
+3 delete 6701
+3 delete 9418
+3 delete 3932
+3 delete 1956
+3 delete 3017
+3 delete 4995
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-08.dot
+
+3 delete 6397
+3 delete 9079
+3 delete 9307
+3 delete 2344
+3 delete 5444
+3 delete 3652
+3 delete 1750
+3 delete 840
+3 delete 8406
+3 delete 1341
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-09.dot
+
+3 delete 730
+3 delete 3804
+3 delete 9389
+3 delete 3802
+3 delete 9128
+3 delete 619
+3 delete 6383
+3 delete 9049
+3 delete 5063
+3 delete 8570
+
+3 inOrder
+3 preOrder
+3 debug tree_test15-10.dot
+

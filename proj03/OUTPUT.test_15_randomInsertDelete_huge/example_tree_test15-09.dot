@@ -1,0 +1,52 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 5063;
+  5063 [penwidth=2];
+
+  5063 [label="5063\nh=3"];
+
+  5063 -> 730 [label="L"];
+  730 [label="730\nh=2"];
+
+  730 -> 619 [label="L"];
+  619 [label="619\nh=0"];
+
+
+
+  730 -> 3802 [label="R"];
+  3802 [label="3802\nh=1"];
+
+  3802 -> L_3802 [style=invis];
+  L_3802 [style=invis];
+
+  3802 -> 3804 [label="R"];
+  3804 [label="3804\nh=0"];
+
+
+
+  5063 -> 9049 [label="R"];
+  9049 [label="9049\nh=2"];
+
+  9049 -> 6383 [label="L"];
+  6383 [label="6383\nh=1"];
+
+  6383 -> L_6383 [style=invis];
+  L_6383 [style=invis];
+
+  6383 -> 8570 [label="R"];
+  8570 [label="8570\nh=0"];
+
+
+
+  9049 -> 9128 [label="R"];
+  9128 [label="9128\nh=1"];
+
+  9128 -> L_9128 [style=invis];
+  L_9128 [style=invis];
+
+  9128 -> 9389 [label="R"];
+  9389 [label="9389\nh=0"];
+
+
+
+}

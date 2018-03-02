@@ -1,0 +1,21 @@
+vertex qaz
+vertex wsx
+vertex edc
+vertex rfv
+vertex tgb
+vertex yhn
+
+edge qaz wsx 1
+edge wsx edc 2
+edge edc rfv 3
+edge rfv tgb 4
+edge tgb yhn 5
+edge yhn qaz 6
+
+vertex goOut
+edge yhn goOut 10
+
+vertex goIn
+edge goIn qaz 20
+edge goIn wsx 21
+

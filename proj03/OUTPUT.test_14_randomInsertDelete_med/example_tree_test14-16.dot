@@ -1,0 +1,48 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 1139;
+  1139 [penwidth=2];
+
+  1139 [label="1139\nh=3"];
+
+  1139 -> 354 [label="L"];
+  354 [label="354\nh=2"];
+
+  354 -> 312 [label="L"];
+  312 [label="312\nh=0"];
+
+
+
+  354 -> 750 [label="R"];
+  750 [label="750\nh=1"];
+
+  750 -> 681 [label="L"];
+  681 [label="681\nh=0"];
+
+
+
+  750 -> 1097 [label="R"];
+  1097 [label="1097\nh=0"];
+
+
+
+  1139 -> 1666 [label="R"];
+  1666 [label="1666\nh=2"];
+
+  1666 -> 1190 [label="L"];
+  1190 [label="1190\nh=1"];
+
+  1190 -> 1173 [label="L"];
+  1173 [label="1173\nh=0"];
+
+
+
+  1190 -> R_1190 [style=invis];
+  R_1190 [style=invis];
+
+  1666 -> 1950 [label="R"];
+  1950 [label="1950\nh=0"];
+
+
+
+}

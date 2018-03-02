@@ -1,0 +1,28 @@
+digraph
+ {
+	Dummy [style=invis];
+	Dummy -> 1000;
+	1000 [penwidth=2];
+
+	
+      1000 [label="1000\nh=2"];
+
+      1000 -> 500 [label="L"];
+      500 [label="500\nh=1"];
+
+      500 -> 250 [label="L"];
+      250 [label="250\nh=0"];
+
+      500 -> 750 [label="R"];
+      750 [label="750\nh=0"];
+
+      1000 -> 1500 [label="R"];
+      1500 [label="1500\nh=1"];
+
+      1500 -> 1250 [label="L"];
+      1250 [label="1250\nh=0"];
+
+      1500 -> 1750 [label="R"];
+      1750 [label="1750\nh=0"];
+
+}

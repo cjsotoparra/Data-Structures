@@ -1,0 +1,142 @@
+#! /bin/bash
+
+
+
+TIME_LIMIT=10s
+
+
+# confirm that all of the basic test elements are present.
+if [[ $(ls -1 Test_*.java 2>/dev/null) = "" ]]
+then
+  echo "WARNING: Could not find any testcases.  Please create at least one file named Test_\*.java" 1>&2
+  exit 1
+fi
+
+
+# clean up old outputs
+rm *.student_out *.student_err   2>/dev/null
+
+
+
+# initially, no penalties.  But this might increase as we go...
+PENALTY_DIVISOR=1
+
+SUCCESS=0
+ATTEMPTS=0
+
+FAIL_LIST=""
+
+
+
+# compile the program
+
+rm *.class *.o proj02_bst 2>/dev/null
+
+COMPILE_OUT=$(javac *.java 2>&1)
+COMPILE_RC=$?
+
+if [[ $COMPILE_RC != 0 ]]
+then
+  echo "${COMPILE_OUT}"
+
+  echo "ERROR: compile error.  Terminating grading script." 1>&2
+  exit 1
+
+elif [[ ${COMPILE_OUT} != "" ]]
+then
+  echo "${COMPILE_OUT}"
+
+  echo "WARNING: Some warnings were produced by the compiler.  This will reduce your automatic score by half."
+
+  PENALTY_DIVISOR=$(( PENALTY_DIVISOR*2 ))
+fi
+
+
+
+# run the testcases
+#
+# This simplified set of testcases simply print "ERROR" if any error is
+# detected, so that we don't need directories; we just write the output
+# file right here.
+
+for TESTCASE in $(ls -1d Test_*.java 2>/dev/null | cut -f1 -d'.')
+do
+  echo "----------------------- BEGIN TESTCASE: $TESTCASE ------------------------"
+
+  # BUGFIX: The cat at the end of the *NEXT* command is VERY IMPORTANT!!!
+  #         Without it, there is a race condition, since bash does *NOT*
+  #         wait on the process substition to end.  But by adding the cat,
+  #         we now have a process which will block until the pipe is closed
+  #         (which only happens after all three of the writers die)
+  #
+  # To see this in a simpler scenario, try the following in the shell:
+  #         echo >(sleep 2; echo a) >(sleep 1; echo b)
+  # and compare it to
+  #         echo >(sleep 2; echo a) >(sleep 1; echo b) | cat
+  #
+  timeout ${TIME_LIMIT} java $TESTCASE                                 \
+       1> >(cut -c-1000 | head -n100 > ${TESTCASE}.student_out)        \
+       2> >(cut -c-1000 | head -n100 > ${TESTCASE}.student_err) | cat
+
+  PASS=true
+  if [[ ! -f ${TESTCASE}.out ]]
+  then
+    echo "    -- ERROR: The output file ${TESTCASE}.out was not found! --"
+    PASS=false
+  elif [[ $(diff ${TESTCASE}.out ${TESTCASE}.student_out) != "" ]]
+  then
+    echo "    -- ERROR: The testcase reported one or more errors: --"
+    diff ${TESTCASE}.out ${TESTCASE}.student_out
+    PASS=false
+  fi
+
+  if [[ $(cat ${TESTCASE}.student_err) != "" ]]
+  then
+    echo "    -- ERROR: The testcase printed something to stderr: --"
+    cat ${TESTCASE}.student_err
+    PASS=false
+  fi
+
+
+  if [[ $PASS = true ]]
+  then
+    SUCCESS=$(( SUCCESS+1 ))
+
+    rm ${TESTCASE}.student_out ${TESTCASE}.student_err
+  else
+    echo "    **** FAIL ****"
+
+    FAIL_LIST="$FAIL_LIST
+*     $TESTCASE"
+  fi
+
+  ATTEMPTS=$(( ATTEMPTS+1 ))
+done
+
+
+
+MAX_AUTO_SCORE=50
+
+echo
+echo "*******************************************"
+echo "*            OVERALL REPORT"
+echo "* attempts: $ATTEMPTS"
+echo "* passed:   $SUCCESS"
+echo "*"
+
+if [[ ${PENALTY_DIVISOR} != 1 ]]
+then
+  echo "* penaltyDivisor: ${PENALTY_DIVISOR}    (see above)"
+fi
+
+echo "* score:    $(( MAX_AUTO_SCORE * SUCCESS / ATTEMPTS / PENALTY_DIVISOR ))"
+
+if [[ ${FAIL_LIST} != "" ]]
+then
+  echo "*"
+  echo "* failed:${FAIL_LIST}"
+  echo "*"
+fi
+
+echo "*******************************************"
+

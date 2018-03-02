@@ -1,0 +1,12 @@
+digraph{
+	Dummy [style=invis];
+	Dummy -> 100;
+	100 [penwidth=2];
+
+	
+      100 [label="100\nh=1"];
+
+      100 -> 75 [label="L"];
+      75 [label="75\nh=0"];
+
+}

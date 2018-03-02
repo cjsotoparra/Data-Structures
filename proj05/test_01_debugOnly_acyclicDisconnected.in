@@ -1,0 +1,12 @@
+vertex qaz
+vertex wsx
+vertex edc
+vertex rfv
+vertex tgb
+vertex yhn
+vertex ujm
+
+edge qaz wsx 1
+edge edc rfv 2
+edge tgb yhn 3
+

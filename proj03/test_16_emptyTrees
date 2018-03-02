@@ -1,0 +1,16 @@
+2 inOrder
+2 preOrder
+2 debug tree_test16-1.dot
+
+2 insert 1
+
+2 inOrder
+2 preOrder
+2 debug tree_test16-2.dot
+
+2 delete 1
+
+2 inOrder
+2 preOrder
+2 debug tree_test16-3.dot
+

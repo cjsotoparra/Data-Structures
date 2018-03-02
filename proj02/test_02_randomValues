@@ -1,0 +1,36 @@
+insert 7
+insert 5
+insert 3
+insert 9
+
+inOrder
+preOrder
+debug test_02_step1.dot
+
+insert 15
+insert 0
+insert 2
+insert 13
+
+inOrder
+preOrder
+debug test_02_step2.dot
+
+insert 14
+insert 1
+insert 4
+insert 8
+
+inOrder
+preOrder
+debug test_02_step3.dot
+
+insert 11
+insert 12
+insert 6
+insert 10
+
+inOrder
+preOrder
+debug test_02_step4.dot
+

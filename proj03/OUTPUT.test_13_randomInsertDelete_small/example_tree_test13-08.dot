@@ -1,0 +1,16 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 364;
+  364 [penwidth=2];
+
+  364 [label="364\nh=1"];
+
+  364 -> L_364 [style=invis];
+  L_364 [style=invis];
+
+  364 -> 441 [label="R"];
+  441 [label="441\nh=0"];
+
+
+
+}

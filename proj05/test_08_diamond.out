@@ -1,0 +1,33 @@
+Reachable: t
+Reachable: t -> l
+Reachable: t -> l -> r
+Reachable: t -> l -> r -> b
+There is no path from l to t
+Reachable: l
+Reachable: l -> r
+Reachable: l -> r -> b
+There is no path from r to t
+There is no path from r to l
+Reachable: r
+Reachable: r -> b
+There is no path from b to t
+There is no path from b to l
+There is no path from b to r
+Reachable: b
+Dijkstra: len=0 t
+Dijkstra: len=1 t -> l
+Dijkstra: len=5 t -> r
+Dijkstra: len=4 t -> l -> b
+There is no path from l to t
+Dijkstra: len=0 l
+Dijkstra: len=10 l -> r
+Dijkstra: len=3 l -> b
+There is no path from r to t
+There is no path from r to l
+Dijkstra: len=0 r
+Dijkstra: len=2 r -> b
+There is no path from b to t
+There is no path from b to l
+There is no path from b to r
+Dijkstra: len=0 b
+Testcase completed.

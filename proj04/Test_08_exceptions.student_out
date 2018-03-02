@@ -1,0 +1,9 @@
+Checking to make sure that every dicationary throws an exception when you try to delete from an empty tree.
+Inserting with val=null; an exception should result.
+Inserting the chosen key into every dictionary.
+Inserting the key a second time; exceptions should result.
+Checking to make sure the getSuccessor() throws an exception if the key is not in the dictionary.
+   ERROR: Calling getSuccesor() on a non-existent key did throw an exception.  d=4 class=BST    key(existing)=-217141 key(broken)=-217142.
+   ERROR: Calling getSuccesor() on a non-existent key did throw an exception.  d=5 class=BST    key(existing)=-217141 key(broken)=-217142.
+   ERROR: Calling getSuccesor() on a non-existent key did throw an exception.  d=6 class=AVLTree    key(existing)=-217141 key(broken)=-217142.
+   ERROR: Calling getSuccesor() on a non-existent key did throw an exception.  d=7 class=AVLTree    key(existing)=-217141 key(broken)=-217142.

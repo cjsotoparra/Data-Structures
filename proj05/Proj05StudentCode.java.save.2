@@ -1,0 +1,154 @@
+/* class Proj05StudentCode
+ *
+ * This is the file that the students must turn in.  The instructors have
+ * provided the skeleton for it.
+ *
+ * Skeleton code: Russell Lewis
+ * Author:        TODO
+ */
+
+
+import java.io.*;
+import java.util.*;
+
+
+public class Proj05StudentCode
+{
+	/* this must open up the filename specified, and then print out a
+	 * complete .dot file, which includes all of the information from
+	 * the graph.
+	 */
+	public static void printDotFile(Proj05Vertex[] verts, String filename)
+		throws IOException
+	{
+
+                BufferedWriter bw = null;
+                FileWriter fw = null;
+                String content = null;
+
+                try {
+                        //open file here
+                        fw = new FileWriter(filename);
+                        bw = new BufferedWriter(fw);
+                        bw.write("digraph {\n");
+
+                        //go through the array of vertices
+                        for(int i = 0; i < verts.length; i++){
+
+                              //write the vertex number to the file
+                              content = "  " + verts[i].name + ";\n";
+                              bw.write(content);
+
+                              //iterate through the edges if any
+                              for(Proj05Edge e: verts[i].outEdges){
+
+                                     //Print Edges
+                                     content = "    " + verts[i].name + " -> " + e.toVrt.name + " [label=" + e.weight + "];\n";
+                                     bw.write(content);
+
+                              }//edge for loop
+
+                        }//vertex for loop
+
+                        bw.write("}\n");
+                } catch (IOException e) {
+                        System.err.println("Error: " + e.getMessage());
+                } finally {
+
+                        if(bw != null){
+                               bw.close();
+                        }
+                }//end try/catch/finally
+
+	}//end method
+
+
+	/* this checks to see if one index is reachable from another.  It
+	 * prints out the solution to System.out.
+	 *
+	 * The 'fromIndx' and 'toIndx' are the indices, in the verts[]
+	 * array parameter, of the endpoints of the search.  The path must
+	 * start at the 'from' node, and get to the 'to' node.
+	 */
+	public static void reachable(Proj05Vertex[] verts,
+	                             int fromIndx, int toIndx)
+	{
+
+		//set the connect component to -1
+		for(int i=0; i<verts.length; i++){
+			verts[i].accInt = -1;
+		}//for loop1
+
+		int current_component_num =0;
+
+		//itertate thg=rough the vertices
+		for(int j = 0; j<verts.length; j++){
+
+			//check if it is unlabled and recurse if it is
+			if(verts[j].accInt < 0){
+				DFS2(verts[j], current_component_num++);
+			}
+
+		}//for loop 2
+
+		if(verts[fromIndx].accInt != verts[toIndx].accInt){
+
+                        //print no path message
+			System.out.println("There is no path from " + verts[fromIndx].name + " to " + verts[toIndx].name);
+		}else {
+
+                        for(int j =0; j < verts.length; j++){
+                               verts[j].accBool = true;
+                               Proj05Vertex parent = null;
+
+                        }//for loop
+
+                        //Launch at verts[toIndx], building a DFS tree that will verrts[fromIndx]
+                        DFS3(verts[toIndx]);
+                        Proj05Vertex v = verts[fromIndx];
+
+                        while(v != verts[toIndx]){
+
+
+                        }
+                }
+	}
+
+
+	private static void DFS2(Proj05Vertex v, int ccn){
+		//Label this vertex with connect component number ccn
+		v.accInt = ccn;
+
+		//Recurse on unlabled neighbors
+		for(Proj05Edge e: v.outEdges){
+
+			//if vertex is unlabled
+			if(e.accInt < 0){
+				DFS2(e.toVrt, ccn);
+			}
+		}
+
+	}//DFS2
+
+        private static void DFS3(Proj05Vertex v){
+
+
+        }//DFS3
+
+
+	/* this must run dijkstra's algorithm.  It prints out the solution
+	 * to System.out - which will include both the path, and also the
+	 * total length of the path.
+	 *
+	 * The 'fromIndx' and 'toIndx' are the indices, in the verts[]
+	 * array parameter, of the endpoints of the search.  The path must
+	 * start at the 'from' node, and get to the 'to' node.  And, of
+	 * course, it must also be optimal.
+	 */
+	public static void dijkstra(Proj05Vertex[] verts,
+	                            int fromIndx, int toIndx)
+	{
+throw new RuntimeException("TODO");
+	}
+}
+

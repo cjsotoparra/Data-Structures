@@ -1,0 +1,32 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 1302;
+  1302 [penwidth=2];
+
+  1302 [label="1302\nh=2"];
+
+  1302 -> 747 [label="L"];
+  747 [label="747\nh=1"];
+
+  747 -> L_747 [style=invis];
+  L_747 [style=invis];
+
+  747 -> 1106 [label="R"];
+  1106 [label="1106\nh=0"];
+
+
+
+  1302 -> 1815 [label="R"];
+  1815 [label="1815\nh=1"];
+
+  1815 -> 1483 [label="L"];
+  1483 [label="1483\nh=0"];
+
+
+
+  1815 -> 6061 [label="R"];
+  6061 [label="6061\nh=0"];
+
+
+
+}

@@ -1,0 +1,13 @@
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=0 class=UnsortedArray
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=1 class=UnsortedArray
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=2 class=SortedArray
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=3 class=SortedArray
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=4 class=BST
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=5 class=BST
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=6 class=AVLTree
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=7 class=AVLTree
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=8 class=HashTable
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=9 class=HashTable
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=10 class=HashMap_Wrapper
+Success!  A Dictionary threw an exception from getSuccessor() as expected.  d=11 class=TreeMap_Wrapper
+Test Completed

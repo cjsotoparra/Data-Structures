@@ -1,0 +1,33 @@
+insert 10
+insert 15
+insert 20
+insert 25
+
+inOrder
+preOrder
+debug test_03_step1.dot
+
+insert 10
+insert 15
+insert 20
+insert 25
+
+inOrder
+preOrder
+debug test_03_step2.dot
+
+insert 10
+insert 15
+insert 20
+insert 25
+
+inOrder
+preOrder
+debug test_03_step3.dot
+
+delete 25
+
+inOrder
+preOrder
+debug test_03_step4.dot
+

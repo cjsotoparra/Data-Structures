@@ -1,0 +1,4 @@
+ERROR: Could not insert 10 because it is already in the tree.
+ERROR: Could not insert 20 because it is already in the tree.
+ERROR: Could not delete 20 because it was not in the tree.
+ERROR: Could not delete 10 because it was not in the tree.

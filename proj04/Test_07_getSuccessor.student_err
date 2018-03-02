@@ -1,0 +1,3 @@
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -4958
+	at HashTable.getSuccessor(HashTable.java:217)
+	at Test_07_getSuccessor.main(Test_07_getSuccessor.java:59)

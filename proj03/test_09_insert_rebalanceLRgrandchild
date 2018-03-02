@@ -1,0 +1,24 @@
+2 insert 37
+
+2 inOrder
+2 preOrder
+2 debug tree_test09-1.dot
+
+2 insert 17
+
+2 inOrder
+2 preOrder
+2 debug tree_test09-2.dot
+
+2 insert 23
+
+2 inOrder
+2 preOrder
+2 debug tree_test09-3.dot
+
+2 insert 29
+
+2 inOrder
+2 preOrder
+2 debug tree_test09-4.dot
+

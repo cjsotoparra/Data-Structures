@@ -1,0 +1,8 @@
+insert 10
+insert 0
+insert 20
+
+preOrder
+inOrder
+debug test_01_step1.dot
+

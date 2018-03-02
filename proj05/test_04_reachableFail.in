@@ -1,0 +1,36 @@
+vertex asdf
+vertex jkl
+vertex qwerty
+vertex foo
+vertex bar
+vertex baz
+vertex fred
+vertex wilma
+vertex qwop
+vertex 1234
+vertex hello
+vertex world
+
+edge 1234 wilma 14
+edge asdf hello 6
+edge asdf qwerty 5
+edge bar jkl 15
+edge bar wilma 3
+edge baz foo 1
+edge foo asdf 19
+edge foo jkl 12
+edge fred asdf 11
+edge jkl bar 2
+edge jkl foo 17
+edge jkl wilma 20
+edge qwerty 1234 10
+edge qwerty fred 13
+edge qwerty qwop 8
+edge qwerty wilma 9
+edge qwop 1234 4
+edge qwop wilma 18
+edge wilma asdf 7
+edge wilma qwerty 16
+
+reachable asdf jkl
+

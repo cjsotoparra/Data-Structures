@@ -1,0 +1,6 @@
+Checking to make sure that every dicationary throws an exception when you try to delete from an empty tree.
+Inserting with val=null; an exception should result.
+Inserting the chosen key into every dictionary.
+Inserting the key a second time; exceptions should result.
+Checking to make sure the getSuccessor() throws an exception if the key is not in the dictionary.
+Test Completed

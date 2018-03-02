@@ -1,0 +1,13 @@
+digraph
+ {
+	Dummy [style=invis];
+	Dummy -> 190;
+	190 [penwidth=2];
+
+	
+      190 [label="190\nh=1"];
+
+      190 -> 441 [label="R"];
+      441 [label="441\nh=0"];
+
+}

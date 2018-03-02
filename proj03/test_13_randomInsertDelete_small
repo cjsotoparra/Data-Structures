@@ -1,0 +1,60 @@
+1 insert 92
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-01.dot
+
+1 insert 741
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-02.dot
+
+1 delete 92
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-03.dot
+
+1 insert 190
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-04.dot
+
+1 delete 741
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-05.dot
+
+1 insert 441
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-06.dot
+
+1 insert 364
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-07.dot
+
+1 delete 190
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-08.dot
+
+1 delete 441
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-09.dot
+
+1 delete 364
+
+1 inOrder
+1 preOrder
+1 debug tree_test13-10.dot
+

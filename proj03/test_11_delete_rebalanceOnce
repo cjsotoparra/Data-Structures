@@ -1,0 +1,16 @@
+2 insert 256
+2 insert 4
+2 insert 3125
+2 insert 1
+2 insert 27
+
+2 inOrder
+2 preOrder
+2 debug tree_test11-1.dot
+
+2 delete 3125
+
+2 inOrder
+2 preOrder
+2 debug tree_test11-2.dot
+

@@ -1,0 +1,203 @@
+public class AVLTree implements Proj04Dictionary
+{
+
+        private AVLNode root;
+
+
+        public AVLTree()
+        {
+                // See my comment in the constructor for AVLNode.  I like
+                // to explicitly set things to null, instead of simply
+                // using the default values.
+                //      - Russ
+                root = null;
+        }
+
+	public void insert(int key, String data)
+		throws IllegalArgumentException
+	{
+//		throw new RuntimeException("TODO");
+
+                //create new node
+                AVLNode temp = root;
+
+                //first search for the value in the tree
+                temp.data = search(key);
+
+                //if temp is not null then that means element is already in the tree
+                if(temp.data != null){
+                        System.err.println("ERROR: Could not insert "+key+" because it is already in the tree.");
+                        return;
+                }
+
+                //if not null then insert the element in the tree
+                root = insertH(root, key, data);
+	}//insert
+
+        private static AVLNode insertH(AVLNode subtree, int key, String data){
+
+                //if the tree is empty then just create a new node
+                if (subtree == null){
+                        subtree = new AVLNode(key, data);
+
+                //else travese the tree and find where to insert
+                }else {
+                        //go left
+                        if (key < subtree.key){
+                                subtree.left = insertH(subtree.left, key, data);
+                        //else go right
+                        }else{
+                                subtree.right = insertH(subtree.right, key, data);
+                        }
+                }//if else for traversal
+
+
+                //update the hieght
+//                 subtree.height = Math.max(getHeight(subtree.left), getHeight(subtree.right)) + 1;
+
+                //call rebalnce on it
+  //              subtree = rebalance(subtree);
+
+                //return subtree
+                return subtree;
+        }//AVLNode insert
+
+
+
+	public void delete(int key)
+		throws IllegalArgumentException
+	{
+		//throw new RuntimeException("TODO");
+
+                //create new node
+                AVLNode temp = root;
+
+                //first search for the value in the tree
+                temp.data = search(key);
+
+                //if the element is not in the tree then print error and return
+                if(temp.data == null){
+                        System.err.println("ERROR: Could not delete "+key+" because it was not in the tree.");
+                        return;
+//                      throw new IllegalArgumentException();
+                }
+
+                //else go delete the element
+                 root= deleteH(root, key);
+
+	}
+
+        private AVLNode deleteH(AVLNode root, int key){
+
+                // STEP 1: PERFORM STANDARD BST DELETE
+                if (root == null){
+                        return null;
+                }
+
+                // If the val to be deleted is smaller than
+                // the root's val, then it lies in left subtree
+                if (key < root.key){
+                        root.left = deleteH(root.left, key);
+                }
+
+                // If the val to be deleted is greater than the
+                // root's val, then it lies in right subtree
+                else if (key > root.key){
+                        root.right = deleteH(root.right, key);
+                }
+
+                // if val is same as root's val, then this is the node
+                // to be deleted
+                else{
+
+                        //node with no children
+                        if(root.left == null && root.right == null){
+                                root = null;
+                                return root;
+
+                        // node with only one child
+                        }else if (root.left == null){
+                                root = root.right;
+                                return root;
+                        }else if(root.right == null){
+                                root= root.left;
+                                return root;
+                        }else //two children
+                                root.key = getSuccessor(root.right.key);
+                                root.left = deleteH(root.left, root.key);
+                        }
+
+
+                // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
+               // root.height = Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+
+                //call rebalance on it
+               // root = rebalance(root);
+                return root;
+        }
+
+
+	public String search(int key)
+	{
+//		throw new RuntimeException("TODO");
+                AVLNode node = root;
+                while(node!=null){
+                        if(node.key==key){
+                                return node.data;
+                        }else if(node.key>key){
+                                node = node.left;
+                        }else{
+                                node = node.right;
+                        }//if else
+                }//while loop
+
+                //if the element was niot ofund then return null
+                return null;
+
+	}
+
+
+	public Integer[] getKeys()
+	{
+//		throw new RuntimeException("TODO");
+
+                
+	}
+
+
+	public int getSuccessor(int key)
+		throws IllegalArgumentException
+	{
+//		throw new RuntimeException("TODO");
+
+                AVLNode node = root;
+
+                //search for the key
+                while(node!=null){
+
+                        //once key is found, go to the left and getSuccesor
+                        if(node.key==key){
+
+                                //traverse to the left
+                                while(node.left != null){
+                                      node = node.left;
+                                }
+
+                                //return the key
+                                return node.key;
+
+                        //go left
+                        }else if(node.key>key){
+                                node = node.left;
+
+                        //go right
+                        }else{
+                                node = node.right;
+                        }//if else
+                }//while loop
+
+                //if the element was niot ofund then return null
+                return 0;
+	}
+}
+

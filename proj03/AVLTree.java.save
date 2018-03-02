@@ -1,0 +1,588 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/* class AVLTree
+
+ * Models a complete AVLTree.  Individual nodes are modeled by the AVLNode
+ * class.
+ *
+ * The constructor creates an empty tree (root=null).
+ *
+ * This class has many methods which perform basic operations.  Most of these
+ * (non-static) methods have (static) recursive helper methods, which take an
+ * AVLNode as the first paramter; these are static because it is valid for the
+ * parameter to be null.  Thus, the base case for each of these methods is an
+ * empty tree.  (See the method documentation below for details; there are a
+ * few exceptions to this rule.)
+ *
+ * Methods that perform modifications on the tree all use the x=change(x)
+ * style.  These include highly visible methods (such as insert and delete),
+ * and also utility methods (such as rotateRight).
+ */
+public class AVLTree
+{
+	// ALERT
+	//
+	// You *must not* add any fields other than this one to this class!
+	// This field is sufficient for everything that you need to do.
+	//
+	// Also, remember that you can't change the AVLNode class *at all* -
+	// and so you cannot add fields there, either!
+	//
+	// However, you can (and should!) add some static helper methods to
+	// this class.
+	private AVLNode root;
+
+
+	/* default constructor
+	 *
+	 * Initializes this object to represent an empty tree.
+	 */
+	public AVLTree()
+	{
+		// See my comment in the constructor for AVLNode.  I like
+		// to explicitly set things to null, instead of simply
+		// using the default values.
+		//	- Russ
+		root = null;
+	}
+
+
+
+	/* debug(String)
+	 *
+	 * Opens a file with the given filename, and then fills that file with
+	 * .dot file source code, to generate a picture for this tree.  This
+	 * wrapper opens (and closes) the file, and adds the necessary
+	 * prefix/suffix text inside it.  However, the actual body of the file
+	 * should be printed by a recursive helper method.
+	 *
+	 *   - Note from Russ: I have not yet defined the helper method, since
+	 *     I assume that different students might use different Java classes
+	 *     for printing.  One option is to pass a FileWriter as a parameter;
+	 *     another is to *return* a String.
+	 */
+	public void debug(String filename)
+	{
+
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+                boolean ret = false;
+
+		try{
+			fw = new FileWriter(filename);
+			bw = new BufferedWriter(fw);
+
+			//write to file
+			bw.write("diagraph{\n");
+
+			//write inOrder to file and the chidlren as well
+			inOrderWrite(bw, root);
+			//writeChildren(bw, root);
+
+		}catch(IOException ee){
+			ee.printStackTrace();
+		} finally{
+
+			try{
+
+				if(bw != null){
+					bw.close();
+				}
+
+				if(fw != null){
+					fw.close();
+				}
+
+			}catch (IOException e){
+
+				e.printStackTrace();
+			}
+
+		}
+
+
+	}
+
+	private static void inOrderWrite(BufferedWriter bw, AVLNode root){
+
+          try{
+		String content = null;
+		if(root != null){
+
+			//recurse left
+			inOrderWrite(bw, root.left);
+
+			//write to file
+			content = "" + root.val + "[label=" + root.val + "\\h=" + root.height + "];\n";
+			bw.write(content);
+			//recurse right
+			inOrderWrite(bw, root.right);
+		}
+          }catch (IOException e){
+
+                e.printStackTrace();
+           }
+
+
+	}
+
+
+	/*Retruns 1 is the node is a leaf, otherwise it returns 0*/
+	private static boolean isLeaf(AVLNode root){
+
+       		if(root.right==null && root.left==null){
+           		return true;
+       		}else {
+           		return false;
+      		}
+
+	}//isLeaf
+
+	/*This prints the node and the children of the node*/
+	private void printChildren(AVLNode temp, BufferedWriter bw, boolean ret){
+
+           try{
+   		//travese through the tree
+   		if (temp != null) {
+
+      			//recurse left
+      			printChildren(temp.left, bw, ret);
+
+      			//check if is not a leaf
+      			ret = isLeaf(temp);
+      			if(ret==false){
+
+           			//check is it has a left child first
+           			if(temp.left !=null){
+           			 	//write
+            				//(fp2, "%d->%d;\n", temp->data, temp->left->data);
+
+                                        bw.write("" + root.left + ";\\n");
+           			}
+
+           			//check to see if it has a right child
+           			if(temp.right !=null){
+					  //     fprintf(fp2, "%d->%d;\n", temp->data, temp->right->data);
+			         }
+
+      			}//leaf check
+
+      			//recurse right
+      			printChildren(temp.right, bw, ret);
+   		}//if statement to traverse and print
+           }catch(IOException e){
+
+                e.printStackTrace();
+           }
+
+
+	}//printchildren
+
+
+
+
+	/* print_inOrder()
+	 *
+	 * Prints out an in-order traversal of the tree to stdout (followed by
+	 * a newline).  The keys are separated by spaces, and the list (if
+	 * non-empty) has a trailing space.  If the tree is empty, this prints
+	 * out nothing except for the newline.  Uses a static recursive helper
+	 * method.
+	 *
+	 * static print_inOrder(AVLNode)
+	 *
+	 * Helper method for the public method.  Is static; takes an AVLNode
+	 * parameter, which might be null.  If the parameter is null, it does
+	 * nothing.  Works recursively.
+	 */
+	public void print_inOrder()
+	{
+	//	throw new RuntimeException("TODO: implement me");
+
+		print_inOrder(root);
+		System.out.print("\n");
+	}
+
+	private void print_inOrder(AVLNode tree)
+	{
+
+		if(tree != null){
+			print_inOrder(tree.left);
+			System.out.print(tree.val);
+			print_inOrder(tree.right);
+		}
+	}
+
+	/* print_preOrder()
+	 *
+	 * See print_inOrder() above - works in exactly the same way, except
+	 * produces a pre-order traversal instead of an in-order traversal.
+	 */
+	public void print_preOrder()
+	{
+
+		print_preOrder(root);
+		System.out.print("\n");
+	}
+
+	private void print_preOrder(AVLNode tree){
+
+		if(tree != null){
+			System.out.print(tree.val);
+			print_preOrder(tree.left);
+			print_preOrder(tree.right);
+		}
+
+	}
+
+	/* search(int)
+	 *
+	 * Searches the tree for a given key.  Returns the node where the tree
+	 * exists, or null if the key does not exist.  May be implemented
+	 * recursively (with a helper method), or as a loop.
+	 */
+	public AVLNode search(int val)
+	{
+
+		return searchHelper(root, val);
+	}//search
+
+	/* searchHelper(root, int)
+         *
+         * Searches the tree for a given key.  Returns the node where the tree
+         * exists, or null if the key does not exist.
+         */
+
+	private static AVLNode searchHelper(AVLNode root, int val){
+
+		//base case
+		if(root==null){
+			return null;
+		}
+
+		//recurse until node is found
+		if(root.val==val){
+			return root;
+		}else if(val<root.val){
+			return searchHelper(root.left, val);
+		}else{
+			return searchHelper(root.right, val);
+		}
+
+	}//searchHelper
+
+        private static int getMax(int a, int b){
+		if(a>b){
+			return a;
+		}else{
+			return b;
+		}
+
+	}//getMax
+
+	/* insert(int)
+	 *
+	 * Inserts a new key into the tree; throws IllegalArgumentException if
+	 * the key is a duplicate.
+	 *
+	 * Uses the x=change(x) style to modify the tree.  Uses a static,
+	 * recursive helper method to implement the modification.  The helper
+	 * method is responsible for *all* of the changes associated with
+	 * inserting a new value, including all rebalances.
+	 *
+	 * static insert(AVLNode,int)
+	 *
+	 * Static, recursive helper method for insert(int).  Takes an AVLNode
+	 * parameter, which might be null; if the parameter is null, then it
+	 * creates a new node and returns it.
+	 *
+	 * Always returns the root of the new tree; does all of the
+	 * rebalancing work associated with the insert.
+	 */
+	public void insert(int val)
+		throws IllegalArgumentException
+	{
+
+		//search for dupicates and throw exception if there is one
+		root = search(val);
+		if(root != null){
+			throw new IllegalArgumentException("No Duplicates Allowed");
+		}
+
+		//if there are no dupicates or the tres is not empty,
+		//then we traverse and insert the newNode
+		root = insert(root, val);
+
+	}//insert
+
+	private static AVLNode insert(AVLNode subtree, int val)
+		throws IllegalArgumentException
+	{
+
+		/* 1. insert node normally like a BST */
+		if(subtree==null){
+			subtree= new AVLNode(val);
+			return subtree;
+		}else{
+
+			if(val < subtree.val){
+				subtree.left = insert(subtree.left, val);
+			}else{
+
+				subtree.right = insert(subtree.right, val);
+			}
+
+		}
+
+		/* 2. update height of this node */
+		subtree.height = Math.max(getHeight(subtree.right), getHeight(subtree.left)+1);
+
+		/*3. rebalcance if needed */
+                subtree = rebalance(subtree);
+		return subtree;
+	}
+
+	/* delete(int)
+	 *
+	 * Deletes a key from the tree; throws IllegalArgumentException if
+	 * the key does not exist.
+	 *
+	 * Uses the x=change(x) style to modify the tree.  Uses a static,
+	 * recursive helper method to implement the modification.  The helper
+	 * method is responsible for *all* of the changes associated with
+	 * deleting the value, including all rebalances.
+	 *
+	 * static delete(AVLNode,int)
+	 *
+	 * Static, recursive helper method for delete(int).  Takes an AVLNode
+	 * parameter, which might be null; if the parameter is null, then we
+	 * are attempting to delete from an empty tree, and thus the delete
+	 * fails.  On the other hand, this method can *return* null quite
+	 * normally; this happens when we delete the last node from the tree.
+	 *
+	 * Always returns the root of the new tree (which might be null); does
+	 * all of the rebalancing work associated with the delete.  (But see
+	 * note in the spec about possibly skipping rebalance-on-delete.)
+	 */
+	public void delete(int val)
+		throws IllegalArgumentException
+	{
+
+                //first search for the value in the tree
+                root = search(val);
+
+                if(root == null){
+		        throw new IllegalArgumentException("Value does not exist in the tree");
+                }
+
+                root = deleteHelper(root, val);
+	}
+
+        private static AVLNode deleteHelper(AVLNode root, int val){
+
+               /* 1. delete node normally like a BST */
+                if(val < root.val){
+                         root.left = deleteHelper(root.left, val);
+                }else if(val > root.val){
+
+                         root.right = deleteHelper(root.right, val);
+                }else {
+
+                      // node with only one child or no child
+                      if (root.left == null){
+                          return root.right;
+                      }else if(root.right == null){
+                         return root.left;
+                      }
+
+                      // node with two children: Get the inorder predassor (largest
+                      // in the left subtree)
+                      root.val = maxValue(root.left);
+
+                      // Delete the inorder predaccor
+                      root.left = deleteHelper(root.left, root.val);
+
+                      //update height normally
+                      root.height = setHeight(root);
+
+                      //call reblanace on it to see if it needs tot be rebalanced
+                      root = rebalance(root);
+                }
+
+               return root;
+         }
+
+        private static int maxValue(AVLNode root){
+             int max = root.val;
+             while (root.right != null){
+                   max = root.right.val;
+                   root = root.right;
+             }
+             return max;
+        }//maxValue
+
+	/* static rebalance(AVLNode)
+	 *
+	 * Performs a rebalance (if required) on the current node.  This
+	 * method assumes that the parameter is non-null; if it is passed a
+	 * null parameter, it will hit NullPointerException.  However, it
+	 * is valid for either (or both) of the children of this node to
+	 * be null; to be clear, it is OK to call this on a leaf node.
+	 *
+	 * This method assumes that the height is correct, in the current
+	 * node and all its descendants; thus, after an insert or delete,
+	 * the *CALLER* must update the height before calling this method.
+	 *
+	 * This method returns the root of the new tree.  If no rotations
+	 * were required, then this is simply the parameter; if rotations
+	 * were required, then this returns the root after the rotation.
+	 *
+	 * This method is NON-RECURSIVE.  It runs in O(1) time.  As such, it
+	 * only checks for imbalances at THIS PARTICULAR NODE, never at any
+	 * descendants.
+	 */
+	public static AVLNode rebalance(AVLNode node)
+	{
+		//check if the parameter is null
+		if(node == null){
+			throw new NullPointerException("Parameter cannot be null");
+		}
+
+                int balance = getBalance(node);        //get the blance of the node
+
+                if (balance > 1){                      // indicates either left-left or left-right case
+
+                      if (getBalance(node.left) >= 0){ // confirms left-left case
+
+                               node = rotateRight(node);
+                      }else{                           // confirms left-right case
+                               node.left = rotateLeft(node.left);
+                               node = rotateRight(node);
+                      }
+
+               }else if(balance < -1){                 // indicates either right-right or right-left case
+
+                     if (getBalance(node.right) <= 0){ // confirms right-right case
+
+                              node = rotateLeft(node);
+                     }else{                            // confirms right-left case
+                              node.right = rotateRight(node.right);
+                              node = rotateLeft(node);
+                     }
+               }
+		return node;
+	}//rebalance
+
+	private static int getBalance(AVLNode node){
+
+		if(node == null){
+			return 0;
+		}
+
+		return getHeight(node.left)-getHeight(node.right);
+	}
+
+
+
+	/* static getHeight(AVLNode)
+	 *
+	 * Helper method that returns the height of a subtree.  The parameter
+	 * may be null.
+	 *
+	 * Since a single node has height=0, this should return -1 if passed
+	 * a null parameter.
+	 *
+	 * This method is NON-RECURSIVE.  It runs in O(1) time.  As such, it
+	 * may only check the height field in the current node; it does not
+	 * look at any other nodes.
+	 */
+	public static int getHeight(AVLNode subtree)
+	{
+		if (subtree==null){
+			return -1;
+		}
+
+		return subtree.height;
+	}
+
+	private static int setHeight(AVLNode subtree){
+		if(subtree ==  null){
+			return -1;
+		}else{
+
+			return Math.max(setHeight(subtree.left), setHeight(subtree.right))+1;
+		}
+
+	}
+
+
+
+	/* static rotateRight(AVLNode)
+	 *
+	 * Performs a right-rotation at the current node.  This method assumes
+	 * that both the parameter, and its left child, are non-null; if
+	 * either is null, then a NullPointerException will result.
+	 *
+	 * Returns the root of the new tree, which is always the node which
+	 * (used to be) the left child of the old root.
+	 *
+	 * This method works by changing REFERENCES NOT VALUES.  That is, it
+	 * does not inspect (or change) the .val field of any node; instead,
+	 * it changes the left and right pointers.
+	 *
+	 * This method updates the height of all appropriate nodes after
+	 * rearranging the references.
+	 *
+	 * This method is NON-RECURSIVE.  It runs in O(1) time.  As such, it
+	 * may only check the fields in a fixed number of nodes.
+	 */
+	public static AVLNode rotateRight(AVLNode subtree)
+	{
+		//check that both the subtree and it's left child are not NULL
+		if(subtree == null || subtree.left == null){
+			throw new NullPointerException("subtree or it's left child cannot be null");
+		}
+
+		AVLNode x = subtree.left;
+                AVLNode t2 = x.right;
+		x.right = subtree;
+                subtree.left = t2;
+
+		//update height
+		subtree.height = setHeight(subtree);
+		x.height = setHeight(x);
+
+		//return the root
+		return x;
+	}
+
+	/* static rotateLeft(AVLNode)
+	 *
+	 * See the documentation for rotateRight() above.  This is simply its
+	 * mirror image.
+	 */
+	public static AVLNode rotateLeft(AVLNode subtree)
+	{
+		//check to see if the subtree and it's right child are not null
+		if(subtree == null || subtree.right == null){
+			throw new NullPointerException("subtree or it's right child cannot be null");
+		}
+
+		AVLNode x = subtree.right;
+		AVLNode y = x.left;
+
+		//rotate left
+		x.left = subtree;
+		subtree.right = y;
+
+		//update height
+		subtree.height = setHeight(subtree);
+		x.height = setHeight(x);
+
+		//return the root
+		return x;
+	}
+}
+

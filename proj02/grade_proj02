@@ -1,0 +1,204 @@
+#! /bin/bash
+
+
+
+TIME_LIMIT=10s
+
+
+# confirm that all of the basic test elements are present.
+if [[ ! -f example_proj02_bst ]]
+then
+  echo "ERROR: example_proj02_bst is missing from the current directory." 1>&2
+  exit 1
+fi
+
+if [[ $(ls -1 test_* 2>/dev/null) = "" ]]
+then
+  echo "WARNING: Could not find any testcases.  Please create at least one file named test_\*" 1>&2
+  exit 1
+fi
+
+
+
+# Do we have java or C files, or both?
+if [[ $(ls -1 *.java 2>/dev/null) != "" ]]
+then
+  hasJava=true
+else
+  hasJava=false
+fi
+
+if [[ $(ls -1 *.c 2>/dev/null) != "" ]]
+then
+  hasC=true
+else
+  hasC=false
+fi
+
+
+
+# clean up any old testcase directories
+rm -r OUTPUT.test_*/   2>/dev/null
+
+
+
+# initially, no penalties.  But this might increase as we go...
+PENALTY_DIVISOR=1
+
+SUCCESS=0
+ATTEMPTS=0
+
+FAIL_LIST=""
+
+
+
+# compile the program
+
+rm *.class *.o proj02_bst 2>/dev/null
+
+if [[ $hasJava = true && $hasC = true ]]
+then
+  echo "ERROR: The current directory has both .java and .c files.  You must use only one or the other." 1>&2
+  exit 1
+
+elif [[ $hasJava = true ]]
+then
+  COMPILE_OUT=$(javac *.java 2>&1)
+  COMPILE_RC=$?
+
+elif [[ $hasC = true ]]
+then
+  COMPILE_OUT=$(gcc -Wall -std=gnu99 *.c -o proj02_bst 1>&2)
+  COMPILE_RC=$?
+
+else
+  echo "ERROR: The directory contains neither .java nor .c files.  Please provide some code!" 1>&2
+  exit 1
+fi
+
+if [[ $COMPILE_RC != 0 ]]
+then
+  echo "${COMPILE_OUT}"
+
+  echo "ERROR: compile error.  Terminating grading script." 1>&2
+  exit 1
+
+elif [[ ${COMPILE_OUT} != "" ]]
+then
+  echo "${COMPILE_OUT}"
+
+  echo "WARNING: Some warnings were produced by the compiler.  This will reduce your automatic score by half."
+
+  PENALTY_DIVISOR=$(( PENALTY_DIVISOR*2 ))
+fi
+
+
+
+# run the testcases
+#
+# We run each testcase in a custom directory, since we will be creating some
+# .dot files from both executables.  It's OK if these directories already
+# exist, but we'll remove everything inside them.
+
+# Save the current directory, and the location of the example executable,
+# before we cd in.  It makes it easier to keep track of what's going on.
+GRADE_DIR=$(readlink -f .)
+EXAMPLE_EXEC=$(readlink -f example_proj02_bst)
+
+# also, pre-generate the command to actually *run* the user code, since it
+# varies based on the language.
+if [[ $hasJava = true ]]
+then
+  COMMAND="java -cp .. Proj02_BST"
+else
+  COMMAND=$(readlink -f proj02_bst)
+fi
+
+
+
+for TESTCASE in $(ls -1d test_* 2>/dev/null)
+do
+  echo "----------------------- BEGIN TESTCASE: $TESTCASE ------------------------"
+
+  TESTFILE=$(readlink -f $TESTCASE)
+
+  mkdir OUTPUT.$TESTCASE/ 2>/dev/null
+  cd    OUTPUT.$TESTCASE/
+
+                        ${EXAMPLE_EXEC} $TESTFILE >example.out 2>&1
+  timeout ${TIME_LIMIT}   $COMMAND      $TESTFILE >student.out 2>&1
+
+  PASS=true
+  if [[ $(diff example.out student.out) != "" ]]
+  then
+    echo "    -- ERROR: Output miscompare!  Diff results: --"
+    diff example.out student.out
+    PASS=false
+  fi
+
+  if [[ $(ls -1 example_*.dot | cut -f2- -d'_') != $(ls -1 *.dot | grep -v example_) ]]
+  then
+    echo "    -- ERROR: .dot file list mismatch!  .dot file lists: --"
+    ls -1 *.dot
+    PASS=false
+  fi
+
+  for DOT in $(ls -1 *.dot | rev | cut -f2- -d'.' | rev)
+  do
+    DOT_OUTPUT=$(dot -Tpng -o $DOT.png $DOT.dot 2>&1)
+    RC=$?
+
+    if [[ $RC != 0 || $DOT_OUTPUT != "" ]]
+    then
+      echo "    -- ERROR: .dot file compile error: $DOT.dot --"
+      dot -Tpng -o $DOT.png $DOT.dot 1>&2
+      PASS=false
+    fi
+  done
+
+
+  cd ${GRADE_DIR}
+
+
+  if [[ $PASS = true ]]
+  then
+    SUCCESS=$(( SUCCESS+1 ))
+
+    rm -r OUTPUT.$TESTCASE/
+  else
+    echo "    **** FAIL ****"
+
+    FAIL_LIST="$FAIL_LIST
+*     $TESTCASE"
+  fi
+
+  ATTEMPTS=$(( ATTEMPTS+1 ))
+done
+
+
+
+MAX_AUTO_SCORE=70
+
+echo
+echo "*******************************************"
+echo "*            OVERALL REPORT"
+echo "* attempts: $ATTEMPTS"
+echo "* passed:   $SUCCESS"
+echo "*"
+
+if [[ ${PENALTY_DIVISOR} != 1 ]]
+then
+  echo "* penaltyDivisor: ${PENALTY_DIVISOR}    (see above)"
+fi
+
+echo "* score:    $(( MAX_AUTO_SCORE * SUCCESS / ATTEMPTS / PENALTY_DIVISOR ))"
+
+if [[ ${FAIL_LIST} != "" ]]
+then
+  echo "*"
+  echo "* failed:${FAIL_LIST}"
+  echo "*"
+fi
+
+echo "*******************************************"
+

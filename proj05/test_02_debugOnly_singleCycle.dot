@@ -1,0 +1,19 @@
+digraph {
+  qaz;
+    qaz -> wsx [label=1];
+  wsx;
+    wsx -> edc [label=2];
+  edc;
+    edc -> rfv [label=3];
+  rfv;
+    rfv -> tgb [label=4];
+  tgb;
+    tgb -> yhn [label=5];
+  yhn;
+    yhn -> qaz [label=6];
+    yhn -> goOut [label=10];
+  goOut;
+  goIn;
+    goIn -> qaz [label=20];
+    goIn -> wsx [label=21];
+}

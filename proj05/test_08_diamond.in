@@ -1,0 +1,52 @@
+vertex t
+vertex b
+vertex l
+vertex r
+
+edge t l 1
+edge t b 20
+edge t r 5
+edge l r 10
+edge l b 3
+edge r b 2
+
+reachable t t
+reachable t l
+reachable t r
+reachable t b
+
+reachable l t
+reachable l l
+reachable l r
+reachable l b
+
+reachable r t
+reachable r l
+reachable r r
+reachable r b
+
+reachable b t
+reachable b l
+reachable b r
+reachable b b
+
+dijkstra  t t
+dijkstra  t l
+dijkstra  t r
+dijkstra  t b
+
+dijkstra  l t
+dijkstra  l l
+dijkstra  l r
+dijkstra  l b
+
+dijkstra  r t
+dijkstra  r l
+dijkstra  r r
+dijkstra  r b
+
+dijkstra  b t
+dijkstra  b l
+dijkstra  b r
+dijkstra  b b
+

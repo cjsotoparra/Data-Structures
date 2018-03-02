@@ -1,0 +1,24 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 23;
+  23 [penwidth=2];
+
+  23 [label="23\nh=2"];
+
+  23 -> 17 [label="L"];
+  17 [label="17\nh=0"];
+
+
+
+  23 -> 37 [label="R"];
+  37 [label="37\nh=1"];
+
+  37 -> 29 [label="L"];
+  29 [label="29\nh=0"];
+
+
+
+  37 -> R_37 [style=invis];
+  R_37 [style=invis];
+
+}

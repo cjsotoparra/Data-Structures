@@ -1,0 +1,35 @@
+1 insert 100
+1 inOrder
+1 preOrder
+1 debug tree_test02-1.dot
+
+1 insert 50
+1 inOrder
+1 preOrder
+1 debug tree_test02-2.dot
+
+1 insert 150
+1 inOrder
+1 preOrder
+1 debug tree_test02-3.dot
+
+1 insert 25
+1 inOrder
+1 preOrder
+1 debug tree_test02-4.dot
+
+1 insert 75
+1 inOrder
+1 preOrder
+1 debug tree_test02-5.dot
+
+1 insert 125
+1 inOrder
+1 preOrder
+1 debug tree_test02-6.dot
+
+1 insert 175
+1 inOrder
+1 preOrder
+1 debug tree_test02-7.dot
+

@@ -1,0 +1,6 @@
+Exception in thread "main" java.lang.NullPointerException
+	at java.util.ComparableTimSort.countRunAndMakeAscending(ComparableTimSort.java:325)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:188)
+	at java.util.Arrays.sort(Arrays.java:1246)
+	at Test_09_random.test_getKeys(Test_09_random.java:186)
+	at Test_09_random.main(Test_09_random.java:67)

@@ -1,0 +1,102 @@
+/* class Proj05StudentCode
+ *
+ * This is the file that the students must turn in.  The instructors have
+ * provided the skeleton for it.
+ *
+ * Skeleton code: Russell Lewis
+ * Author:        TODO
+ */
+
+
+import java.io.*;
+import java.util.*;
+
+
+public class Proj05StudentCode
+{
+	/* this must open up the filename specified, and then print out a
+	 * complete .dot file, which includes all of the information from
+	 * the graph.
+	 */
+	public static void printDotFile(Proj05Vertex[] verts, String filename)
+		throws IOException
+	{
+
+                BufferedWriter bw = null;
+                FileWriter fw = null;
+                String content = null;
+
+                try {
+                        //open file here
+                        fw = new FileWriter(filename);
+                        bw = new BufferedWriter(fw);
+                        bw.write("digraph {\n");
+
+                        //go through the array of vertices
+                        for(int i = 0; i < verts.length; i++){
+
+                              //write the vertex number to the file
+                              content = "  " + verts[i].name + ";\n";
+                              bw.write(content);
+
+                              //iterate through the edges if any
+                              for(Proj05Edge e: verts[i].outEdges){
+
+                                     //Print Edges
+                                     content = "    " + verts[i].name + " -> " + e.toVrt.name + " [label=" + e.weight + "];\n";
+                                     bw.write(content);
+
+                              }//edge for loop
+
+                        }//vertex for loop
+
+                        //end the digraph
+                        bw.write("}\n");
+                } catch (IOException e) {
+                        System.err.println("Error: " + e.getMessage());
+                } finally {
+
+                        if(bw != null){
+                               bw.close();
+                        }
+                }//end try/catch/finally
+
+	}//end method
+
+
+	/* this checks to see if one index is reachable from another.  It
+	 * prints out the solution to System.out.
+	 *
+	 * The 'fromIndx' and 'toIndx' are the indices, in the verts[]
+	 * array parameter, of the endpoints of the search.  The path must
+	 * start at the 'from' node, and get to the 'to' node.
+	 */
+	public static void reachable(Proj05Vertex[] verts,
+	                             int fromIndx, int toIndx)
+	{
+
+               //label all vertices ith componennt number
+               for(int i =0; i< verts.length; i++){
+
+                      vert
+               }
+
+	}
+
+
+	/* this must run dijkstra's algorithm.  It prints out the solution
+	 * to System.out - which will include both the path, and also the
+	 * total length of the path.
+	 *
+	 * The 'fromIndx' and 'toIndx' are the indices, in the verts[]
+	 * array parameter, of the endpoints of the search.  The path must
+	 * start at the 'from' node, and get to the 'to' node.  And, of
+	 * course, it must also be optimal.
+	 */
+	public static void dijkstra(Proj05Vertex[] verts,
+	                            int fromIndx, int toIndx)
+	{
+throw new RuntimeException("TODO");
+	}
+}
+

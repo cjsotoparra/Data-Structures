@@ -1,0 +1,29 @@
+Reachable: t
+Reachable: t -> l
+Reachable: t -> r
+There is no path from t to b
+There is no path from l to t
+Reachable: l
+There is no path from l to r
+There is no path from l to b
+There is no path from r to t
+There is no path from r to l
+Reachable: r
+There is no path from r to b
+There is no path from b to t
+There is no path from b to l
+There is no path from b to r
+Reachable: b
+There is no path from t to l
+There is no path from t to r
+There is no path from t to b
+There is no path from l to t
+There is no path from l to r
+There is no path from l to b
+There is no path from r to t
+There is no path from r to l
+There is no path from r to b
+There is no path from b to t
+There is no path from b to l
+There is no path from b to r
+Testcase completed.

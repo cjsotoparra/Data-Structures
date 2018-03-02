@@ -1,0 +1,24 @@
+0 insert 100
+
+0 inOrder
+0 preOrder
+0 debug tree_test07-1.dot
+
+0 insert 75
+
+0 inOrder
+0 preOrder
+0 debug tree_test07-2.dot
+
+0 insert 50
+
+0 inOrder
+0 preOrder
+0 debug tree_test07-3.dot
+
+0 insert 25
+
+0 inOrder
+0 preOrder
+0 debug tree_test07-4.dot
+

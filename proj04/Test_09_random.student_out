@@ -1,0 +1,6 @@
+   ERROR: Key mismatch.  d=2   class=SortedArray
+       keysExp.length=0   keysActual.length=1
+   ERROR: Key mismatch.  d=3   class=SortedArray
+       keysExp.length=0   keysActual.length=1
+   ERROR: getSuccessor mismatch!   d=8 class=HashTable   succ(expected)=841147 succ(actual)=532386
+   ERROR: getSuccessor mismatch!   d=9 class=HashTable   succ(expected)=841147 succ(actual)=532386

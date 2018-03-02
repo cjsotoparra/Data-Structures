@@ -1,0 +1,13 @@
+digraph
+ {
+	Dummy [style=invis];
+	Dummy -> 4725;
+	4725 [penwidth=2];
+
+	
+      4725 [label="4725\nh=1"];
+
+      4725 -> 4976 [label="R"];
+      4976 [label="4976\nh=0"];
+
+}

@@ -1,0 +1,24 @@
+1 insert 1
+
+1 inOrder
+1 preOrder
+1 debug tree_test08-1.dot
+
+1 insert 2
+
+1 inOrder
+1 preOrder
+1 debug tree_test08-2.dot
+
+1 insert 3
+
+1 inOrder
+1 preOrder
+1 debug tree_test08-3.dot
+
+1 insert 4
+
+1 inOrder
+1 preOrder
+1 debug tree_test08-4.dot
+

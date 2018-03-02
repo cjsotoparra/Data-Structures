@@ -1,0 +1,31 @@
+digraph
+ {
+	Dummy [style=invis];
+	Dummy -> 1139;
+	1139 [penwidth=2];
+
+	
+      1139 [label="1139\nh=3"];
+
+      1139 -> 354 [label="L"];
+      354 [label="354\nh=1"];
+
+      354 -> 312 [label="L"];
+      312 [label="312\nh=0"];
+
+      354 -> 750 [label="R"];
+      750 [label="750\nh=0"];
+
+      1139 -> 1950 [label="R"];
+      1950 [label="1950\nh=2"];
+
+      1950 -> 1190 [label="L"];
+      1190 [label="1190\nh=1"];
+
+      1190 -> 1666 [label="R"];
+      1666 [label="1666\nh=0"];
+
+      1950 -> 2373 [label="R"];
+      2373 [label="2373\nh=0"];
+
+}

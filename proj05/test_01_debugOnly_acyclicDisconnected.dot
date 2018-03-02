@@ -1,0 +1,12 @@
+digraph {
+  qaz;
+    qaz -> wsx [label=1];
+  wsx;
+  edc;
+    edc -> rfv [label=2];
+  rfv;
+  tgb;
+    tgb -> yhn [label=3];
+  yhn;
+  ujm;
+}

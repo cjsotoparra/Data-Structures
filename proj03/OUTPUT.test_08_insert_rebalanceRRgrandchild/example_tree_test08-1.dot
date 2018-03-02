@@ -1,0 +1,10 @@
+digraph {
+  DUMMY [style=invis];
+  DUMMY -> 1;
+  1 [penwidth=2];
+
+  1 [label="1\nh=0"];
+
+
+
+}

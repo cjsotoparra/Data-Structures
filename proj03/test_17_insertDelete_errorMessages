@@ -1,0 +1,19 @@
+0 insert 10
+1 insert 20
+
+0 inOrder
+0 preOrder
+1 inOrder
+0 preOrder
+
+0 insert 10
+1 insert 20
+
+0 delete 20
+1 delete 10
+
+0 inOrder
+0 preOrder
+1 inOrder
+0 preOrder
+
